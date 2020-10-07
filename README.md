@@ -1,28 +1,12 @@
-# TODO Application with Quarkus
+# TODO Application with Quarkus Eclipse JKube Sample
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/cescoffier/quarkus-todo-app/Build)
+This is an Eclipse JKube sample for Deploying a Quarkus based application on top of OpenShift using OpenShift Maven Plugin.
 
-## Database
-
-Run:
-
-```bash
-docker run --ulimit memlock=-1:-1 -it --rm=true --memory-swappiness=0 \
-    --name postgres-quarkus-rest-http-crud -e POSTGRES_USER=restcrud \
-    -e POSTGRES_PASSWORD=restcrud -e POSTGRES_DB=rest-crud \
-    -p 5432:5432 postgres:10.5
-```
-
-## Application
+## Deploying to OpenShift
+OpenShift Maven Plugin is already included in pom. You just need to run:
 
 ```bash
-mvn compile quarkus:dev
+mvn package oc:build oc:resource oc:apply
 ```
 
-Open: http://localhost:8080/
-
-## Variants:
-
-* The `master` branch provides a simple REST application: https://github.com/cescoffier/quarkus-todo-app
-* The `caching` branch adds caching to the application: https://github.com/cescoffier/quarkus-todo-app/tree/caching
-
+Access created `Route`.
